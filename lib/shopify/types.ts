@@ -28,6 +28,11 @@ export type CartItem = {
   merchandise: {
     id: string;
     title: string;
+    image: {
+      // Optional image field
+      src: string; // The source URL of the image
+      altText: string; // Optionally, you can add altText for the image
+    };
     selectedOptions: {
       name: string;
       value: string;
@@ -88,6 +93,12 @@ export type ProductVariant = {
     value: string;
   }[];
   price: Money;
+  compareAtPrice?: Money;
+  image: {
+    // Optional image field
+    src: string; // The source URL of the image
+    altText: string; // Optionally, you can add altText for the image
+  };
 };
 
 export type SEO = {

@@ -63,6 +63,7 @@ function createOrUpdateCartItem(
     merchandise: {
       id: variant.id,
       title: variant.title,
+      image: variant.image,
       selectedOptions: variant.selectedOptions,
       product: {
         id: product.id,

@@ -107,7 +107,8 @@ export default function CartModal() {
                           `/product/${item.merchandise.product.handle}`,
                           new URLSearchParams(merchandiseSearchParams)
                         );
-
+                        const variantImage =
+                          item.merchandise.image?.src || item.merchandise.product.featuredImage.url;
                         return (
                           <li
                             key={i}
@@ -127,7 +128,7 @@ export default function CartModal() {
                                       item.merchandise.product.featuredImage.altText ||
                                       item.merchandise.product.title
                                     }
-                                    src={item.merchandise.product.featuredImage.url}
+                                    src={variantImage}
                                   />
                                 </div>
                                 <Link
@@ -214,7 +215,7 @@ function CheckoutButton() {
 
   return (
     <button
-      className="block w-full rounded-full bg-blue-600 p-3 text-center text-sm font-medium text-white opacity-90 hover:opacity-100"
+      className="block w-full rounded-full bg-secondaryColor p-3 text-center text-sm font-medium text-white opacity-90 hover:opacity-100"
       type="submit"
       disabled={pending}
     >
