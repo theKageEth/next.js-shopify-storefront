@@ -27,6 +27,18 @@ export default function CartModal() {
   const quantityRef = useRef(cart?.totalQuantity);
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
+  const gemColors = [
+    'text-red-500',
+    'text-blue-500',
+    'text-green-500',
+    'text-yellow-500',
+    'text-purple-500',
+    'text-pink-500',
+    'text-indigo-500',
+    'text-orange-500'
+  ];
+
+  const [gemColor, setGemColor] = useState(gemColors[0]);
 
   useEffect(() => {
     if (!cart) {
@@ -43,6 +55,7 @@ export default function CartModal() {
       if (!isOpen) {
         setIsOpen(true);
       }
+      setGemColor(gemColors[Math.floor(Math.random() * gemColors.length)]);
       quantityRef.current = cart?.totalQuantity;
     }
   }, [isOpen, cart?.totalQuantity, quantityRef]);
@@ -50,7 +63,7 @@ export default function CartModal() {
   return (
     <>
       <button aria-label="Open cart" onClick={openCart}>
-        <OpenCart quantity={cart?.totalQuantity} />
+        <OpenCart gemColor={gemColor} quantity={cart?.totalQuantity} />
       </button>
       <Transition show={isOpen}>
         <Dialog onClose={closeCart} className="relative z-50">
